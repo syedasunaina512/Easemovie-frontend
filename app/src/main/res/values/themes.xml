@@ -1,0 +1,25 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme -->
+    <style name="Theme.EaseMovieApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primary_blue</item>
+        <item name="colorSecondary">@color/secondary_cyan</item>
+        <item name="android:windowBackground">@color/soft_blue_bg</item>
+        <item name="android:statusBarColor">@color/soft_blue_bg</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
+    <!-- Specific styles if needed for legacy activities -->
+    <style name="Theme.EaseMovieApp.NoActionBar" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary_blue</item>
+    </style>
+
+    <style name="Theme_EaseMovieApp_Blue" parent="Theme.EaseMovieApp">
+        <item name="colorPrimary">#3A7BD5</item>
+    </style>
+
+    <style name="Theme_EaseMovieApp_Green" parent="Theme.EaseMovieApp">
+        <item name="colorPrimary">#27AE60</item>
+    </style>
+</resources>

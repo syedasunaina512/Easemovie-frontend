@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Premium AI Theme Palette -->
+    <color name="primary_blue">#3A7BD5</color>
+    <color name="secondary_cyan">#00D2FF</color>
+    <color name="accent_purple">#9B51E0</color>
+    <color name="deep_navy">#0D2137</color>
+    <color name="soft_blue_bg">#F9FAFF</color>
+
+    <!-- Standard Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="gray_text">#666666</color>
+    <color name="red">#EA1111</color>
+    <color name="card_bg">#FFFFFF</color>
+
+    <!-- Missing Colors -->
+    <color name="purple_light">#E1BEE7</color>
+    <color name="light_purple">#E1BEE7</color>
+    <color name="invisible">#00000000</color>
+    <color name="orange_dark">#F57C00</color>
+
+    <!-- Theme Aliases (Mapping old names to new premium palette) -->
+    <color name="bg_main">@color/soft_blue_bg</color>
+    <color name="primary_text">@color/deep_navy</color>
+    <color name="secondary_text">@color/gray_text</color>
+    <color name="purple_500">@color/primary_blue</color>
+    <color name="purple_700">@color/deep_navy</color>
+    <color name="nav_selected">@color/primary_blue</color>
+    <color name="nav_unselected">@color/gray_text</color>
+</resources>

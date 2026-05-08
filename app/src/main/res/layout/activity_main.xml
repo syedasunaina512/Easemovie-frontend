@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#FFFFFF"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- GET STARTED SCREEN -->
+    <LinearLayout
+        android:id="@+id/layoutGetStarted"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="EaseMovie"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="Turn your stories into videos"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnGetStarted"
+            android:text="Get Started"
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+    </LinearLayout>
+
+    <!-- LOGIN SCREEN -->
+    <LinearLayout
+        android:id="@+id/layoutLogin"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="Welcome Back"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:hint="Email"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:text="Sign In"
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+    </LinearLayout>
+
+</FrameLayout>
+

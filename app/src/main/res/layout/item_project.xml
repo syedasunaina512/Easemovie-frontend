@@ -1,0 +1,80 @@
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Title + Time -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!-- Progress -->
+        <ProgressBar
+            android:id="@+id/progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"/>
+
+        <!-- Info Row -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvImages"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="🖼 5 images" />
+
+            <TextView
+                android:id="@+id/tvVoice"
+                android:text="🎤 Voice added"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!-- Continue Button -->
+        <Button
+            android:id="@+id/btnContinue"
+            android:text="Continue"
+            android:drawableEnd="@drawable/ic_arrow_right"
+            android:padding="12dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="120dp"
+            android:backgroundTint="@color/orange_dark"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"/>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

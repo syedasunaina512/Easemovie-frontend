@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">EaseMovieApp</string>
+    <string name="settings">Settings</string>
+    <string name="search_settings">Search settings...</string>
+    <string name="no_results">No results found</string>
+    <string name="language">Language</string>
+    <string name="select_language">Select Language</string>
+    <string name="security">Security</string>
+    <string name="default_web_client_id">504145185980-eh3t95ehrdmdqnobv0b6tgbo89b2c2k6.apps.googleusercontent.com</string>
+</resources>

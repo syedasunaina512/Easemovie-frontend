@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "504145185980",
+    "project_id": "easemovieapp",
+    "storage_bucket": "easemovieapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504145185980:android:6667cee106a3cbfd2a54b9",
+        "android_client_info": {
+          "package_name": "com.sakeena.easemovieapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504145185980-qosd8tgh4cno06b4n3hu0q0leija0ehp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sakeena.easemovieapp",
+            "certificate_hash": "5c6aa3caf83b94e6a150c8934262a300588628ec"
+          }
+        },
+        {
+          "client_id": "504145185980-eh3t95ehrdmdqnobv0b6tgbo89b2c2k6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHmgOIppL8K4WlCLRD7m571YLV3n-i5TU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504145185980-eh3t95ehrdmdqnobv0b6tgbo89b2c2k6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

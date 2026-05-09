@@ -22,6 +22,11 @@ interface ApiService {
     suspend fun generateVideo(
         @Body request: VideoRequest
     ): VideoResponse
+
+    @POST("generate_narration")
+    suspend fun generateNarration(
+        @Body request: NarrationRequest
+    ): NarrationResponse
 }
 
 object ApiClient {

@@ -291,12 +291,12 @@ fun HomeHeader(
                 Image(
                     painter = painterResource(id = R.drawable.brain_logo),
                     contentDescription = "Logo",
-                    modifier = Modifier.size(28.dp)
+                    modifier = Modifier.size(32.dp)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = "EASEMOVIE",
-                    fontSize = 16.sp,
+                    text = "EaseMovie",
+                    fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFF0D2137),
                     letterSpacing = 0.5.sp

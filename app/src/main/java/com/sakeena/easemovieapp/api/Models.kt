@@ -21,9 +21,18 @@ data class ImageResponse(
 
 data class VideoRequest(
     val scenes: List<String>,
-    val style: String
+    val style: String,
+    val narration_url: String? = null
 )
 
 data class VideoResponse(
     val video_url: String
+)
+
+data class NarrationRequest(
+    val text: String
+)
+
+data class NarrationResponse(
+    val audio_url: String
 )

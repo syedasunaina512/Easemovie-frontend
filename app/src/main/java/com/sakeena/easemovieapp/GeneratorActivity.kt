@@ -52,6 +52,7 @@ import coil.compose.AsyncImage
 import com.sakeena.easemovieapp.api.ApiClient
 import com.sakeena.easemovieapp.api.SegmentRequest
 import com.sakeena.easemovieapp.api.VideoRequest
+import com.sakeena.easemovieapp.api.NarrationRequest
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -103,16 +104,9 @@ fun GeneratorScreen() {
 
     val scenes = remember { mutableStateListOf<SceneModel>() }
     
-    val voiceLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            val data = result.data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
-            if (!data.isNullOrEmpty()) {
-                storyText = data[0]
-            }
-        }
-    }
+    var narrationUrl by remember { mutableStateOf("") }
+    var isGeneratingNarration by remember { mutableStateOf(false) }
+
     var isProcessing by remember { mutableStateOf(false) }
 
     // Generation States
@@ -270,30 +264,6 @@ fun GeneratorScreen() {
 
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                         Button(
-                            onClick = { 
-                                val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
-                                    putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
-                                    putExtra(RecognizerIntent.EXTRA_PROMPT, "Speak your story idea...")
-                                }
-                                try {
-                                    voiceLauncher.launch(intent)
-                                } catch (e: Exception) {
-                                    Toast.makeText(context, "Voice input not supported on this device", Toast.LENGTH_SHORT).show()
-                                }
-                            },
-                            modifier = Modifier.weight(1f).height(44.dp),
-                            shape = RoundedCornerShape(8.dp),
-                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFF3E5F5)),
-                            contentPadding = PaddingValues(0.dp)
-                        ) {
-                            Icon(Icons.Default.Mic, contentDescription = null, tint = Color(0xFF9C27B0), modifier = Modifier.size(18.dp))
-                            Spacer(modifier = Modifier.width(8.dp))
-                            Text("Voice Input", color = Color(0xFF9C27B0), fontWeight = FontWeight.Bold, fontSize = 14.sp)
-                            Spacer(modifier = Modifier.width(4.dp))
-                            Icon(painterResource(id = R.drawable.ic_person_24), contentDescription = null, tint = Color(0xFF9C27B0).copy(alpha = 0.5f), modifier = Modifier.size(14.dp)) // Simulating sound waves
-                        }
-
-                        Button(
                             onClick = {
                                 if (storyText.isNotEmpty()) {
                                     isProcessing = true
@@ -342,6 +312,39 @@ fun GeneratorScreen() {
                                 Image(painter = painterResource(id = R.drawable.brain_logo), contentDescription = null, modifier = Modifier.size(20.dp))
                                 Spacer(modifier = Modifier.width(6.dp))
                                 Text("Summarize\n& Segment", color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 11.sp, lineHeight = 12.sp)
+                            }
+                        }
+
+                        Button(
+                            onClick = { 
+                                if (storyText.isNotEmpty()) {
+                                    isGeneratingNarration = true
+                                    scope.launch {
+                                        try {
+                                            val response = ApiClient.instance.generateNarration(NarrationRequest(storyText))
+                                            narrationUrl = response.audio_url
+                                            Toast.makeText(context, "Voice Narration Added!", Toast.LENGTH_SHORT).show()
+                                        } catch (e: Exception) {
+                                            Toast.makeText(context, "Narration failed: ${e.message}", Toast.LENGTH_SHORT).show()
+                                        } finally {
+                                            isGeneratingNarration = false
+                                        }
+                                    }
+                                } else {
+                                    Toast.makeText(context, "Please enter story text first", Toast.LENGTH_SHORT).show()
+                                }
+                            },
+                            modifier = Modifier.weight(1f).height(44.dp),
+                            shape = RoundedCornerShape(8.dp),
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFF3E5F5)),
+                            contentPadding = PaddingValues(0.dp)
+                        ) {
+                            if (isGeneratingNarration) {
+                                CircularProgressIndicator(modifier = Modifier.size(18.dp), strokeWidth = 2.dp, color = Color(0xFF9C27B0))
+                            } else {
+                                Icon(Icons.Default.RecordVoiceOver, contentDescription = null, tint = Color(0xFF9C27B0), modifier = Modifier.size(18.dp))
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Text("Add Narration", color = Color(0xFF9C27B0), fontWeight = FontWeight.Bold, fontSize = 13.sp)
                             }
                         }
                     }
@@ -461,7 +464,11 @@ fun GeneratorScreen() {
                                         genProgress = 0.2f
                                         val sceneTexts = scenes.map { it.description ?: it.text }
                                         val response = ApiClient.instance.generateVideo(
-                                            VideoRequest(sceneTexts, selectedStyle?.name ?: "Anime")
+                                            VideoRequest(
+                                                scenes = sceneTexts,
+                                                style = selectedStyle?.name ?: "Anime",
+                                                narration_url = narrationUrl.ifEmpty { null }
+                                            )
                                         )
                                         genProgress = 1f
                                         delay(500)

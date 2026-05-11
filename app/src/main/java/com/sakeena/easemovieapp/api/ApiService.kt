@@ -30,7 +30,7 @@ interface ApiService {
 }
 
 object ApiClient {
-    private const val BASE_URL = "http://192.168.100.13:8000/"
+    private const val BASE_URL = "https://easemovie-backend.onrender.com"
 
     val instance: ApiService by lazy {
         Retrofit.Builder()

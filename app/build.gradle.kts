@@ -46,8 +46,12 @@ android {
 
 dependencies {
 
-    implementation("com.google.firebase:firebase-auth:23.1.0")
-    implementation("com.google.firebase:firebase-storage:21.0.1")
+    // ✅ Firebase & Google Play Services
+    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-storage")
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.android.gms:play-services-auth:21.3.0")
     // ✅ Jetpack Compose
     val composeBom = platform("androidx.compose:compose-bom:2024.06.00")
     implementation(composeBom)
@@ -90,9 +94,6 @@ dependencies {
     // ✅ Glide
     implementation("com.github.bumptech.glide:glide:4.14.2")
     implementation("io.coil-kt:coil-compose:2.6.0")
-    implementation("com.google.firebase:firebase-firestore:26.2.0")
-    implementation("com.google.firebase:firebase-auth-ktx:23.1.0")
-    implementation("com.google.android.gms:play-services-auth:21.2.0")
     implementation("com.facebook.android:facebook-login:17.0.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
 

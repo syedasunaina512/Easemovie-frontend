@@ -52,7 +52,8 @@ import coil.compose.AsyncImage
 import com.sakeena.easemovieapp.api.ApiClient
 import com.sakeena.easemovieapp.api.SegmentRequest
 import com.sakeena.easemovieapp.api.VideoRequest
-import com.sakeena.easemovieapp.api.NarrationRequest
+import com.sakeena.easemovieapp.api.VoiceRequest
+import com.sakeena.easemovieapp.api.VoiceResponse
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -80,12 +81,6 @@ fun GeneratorScreenPreview() {
 fun GeneratorScreen() {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
-
-    // Header States (Functional like Home)
-    var isSearching by remember { mutableStateOf(false) }
-    var searchQuery by remember { mutableStateOf("") }
-    var profileImageUri by remember { mutableStateOf("") }
-    var unreadCount by remember { mutableIntStateOf(0) }
 
     // Flow States
     var storyText by remember { 
@@ -208,14 +203,7 @@ fun GeneratorScreen() {
                     .padding(padding)
                     .verticalScroll(rememberScrollState())
             ) {
-                HomeHeader(
-                    isSearching = isSearching,
-                    searchQuery = searchQuery,
-                    profileImageUri = profileImageUri,
-                    unreadCount = unreadCount,
-                    onSearchToggle = { isSearching = !isSearching },
-                    onQueryChange = { searchQuery = it }
-                )
+                Spacer(modifier = Modifier.height(20.dp))
 
                 Column(modifier = Modifier.padding(horizontal = 20.dp)) {
                     
@@ -321,7 +309,7 @@ fun GeneratorScreen() {
                                     isGeneratingNarration = true
                                     scope.launch {
                                         try {
-                                            val response = ApiClient.instance.generateNarration(NarrationRequest(storyText))
+                                            val response = ApiClient.instance.generateNarration(VoiceRequest(storyText))
                                             narrationUrl = response.audio_url
                                             Toast.makeText(context, "Voice Narration Added!", Toast.LENGTH_SHORT).show()
                                         } catch (e: Exception) {
@@ -467,7 +455,7 @@ fun GeneratorScreen() {
                                             VideoRequest(
                                                 scenes = sceneTexts,
                                                 style = selectedStyle?.name ?: "Anime",
-                                                narration_url = narrationUrl.ifEmpty { null }
+                                                audio_url = narrationUrl.ifEmpty { null }
                                             )
                                         )
                                         genProgress = 1f

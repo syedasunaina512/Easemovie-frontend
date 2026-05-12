@@ -259,12 +259,15 @@ fun HomeHeader(
                 modifier = Modifier.weight(1f),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                IconButton(onClick = { 
-                    onSearchToggle()
-                    onQueryChange("")
-                    focusManager.clearFocus()
-                }) {
-                    Icon(Icons.Default.ArrowBack, contentDescription = "Back", tint = Color.Gray)
+                IconButton(
+                    onClick = { 
+                        onSearchToggle()
+                        onQueryChange("")
+                        focusManager.clearFocus()
+                    },
+                    modifier = Modifier.size(40.dp)
+                ) {
+                    Icon(Icons.Default.ArrowBack, contentDescription = "Back", tint = Color.Gray, modifier = Modifier.size(24.dp))
                 }
                 TextField(
                     value = searchQuery,
@@ -291,12 +294,12 @@ fun HomeHeader(
                 Image(
                     painter = painterResource(id = R.drawable.brain_logo),
                     contentDescription = "Logo",
-                    modifier = Modifier.size(32.dp)
+                    modifier = Modifier.size(38.dp)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
                     text = "EaseMovie",
-                    fontSize = 18.sp,
+                    fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFF0D2137),
                     letterSpacing = 0.5.sp
@@ -304,14 +307,14 @@ fun HomeHeader(
             }
 
             Row(verticalAlignment = Alignment.CenterVertically) {
-                IconButton(onClick = onSearchToggle, modifier = Modifier.size(36.dp)) {
-                    Icon(Icons.Default.Search, contentDescription = "Search", tint = Color.Gray, modifier = Modifier.size(20.dp))
+                IconButton(onClick = onSearchToggle, modifier = Modifier.size(40.dp)) {
+                    Icon(Icons.Default.Search, contentDescription = "Search", tint = Color.Gray, modifier = Modifier.size(24.dp))
                 }
-                Box(modifier = Modifier.size(36.dp)) {
+                Box(modifier = Modifier.size(40.dp)) {
                     IconButton(onClick = { 
                         context.startActivity(Intent(context, AppNotificationsActivity::class.java))
                     }, modifier = Modifier.fillMaxSize()) {
-                        Icon(painterResource(id = R.drawable.ic_notifications_24), contentDescription = "Notifications", tint = Color.Gray, modifier = Modifier.size(20.dp))
+                        Icon(painterResource(id = R.drawable.ic_notifications_24), contentDescription = "Notifications", tint = Color.Gray, modifier = Modifier.size(24.dp))
                     }
                     if (unreadCount > 0) {
                         Box(
@@ -319,16 +322,16 @@ fun HomeHeader(
                                 .size(8.dp)
                                 .background(Color(0xFF2196F3), CircleShape)
                                 .align(Alignment.TopEnd)
-                                .offset(x = (-4).dp, y = 4.dp)
+                                .offset(x = (-2).dp, y = 2.dp)
                         )
                     }
                 }
-                Spacer(modifier = Modifier.width(4.dp))
+                Spacer(modifier = Modifier.width(6.dp))
                 
                 // Functional Profile Icon
                 Box(
                     modifier = Modifier
-                        .size(32.dp)
+                        .size(38.dp)
                         .clip(CircleShape)
                         .border(1.dp, Color.LightGray, CircleShape)
                         .clickable { showProfileDialog = true }

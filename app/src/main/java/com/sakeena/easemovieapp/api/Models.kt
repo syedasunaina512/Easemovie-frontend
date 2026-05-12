@@ -22,18 +22,18 @@ data class ImageResponse(
 data class VideoRequest(
     val scenes: List<String>,
     val style: String,
-    val narration_url: String? = null
+    val audio_url: String? = null
 )
 
 data class VideoResponse(
     val video_url: String
 )
 
-data class NarrationRequest(
+data class VoiceRequest(
     val text: String,
     val voice: String = "en-US-JennyNeural"
 )
 
-data class NarrationResponse(
+data class VoiceResponse(
     val audio_url: String
 )

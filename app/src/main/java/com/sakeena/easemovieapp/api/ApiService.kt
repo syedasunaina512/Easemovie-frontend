@@ -25,8 +25,8 @@ interface ApiService {
 
     @POST("generate_voice")
     suspend fun generateNarration(
-        @Body request: NarrationRequest
-    ): NarrationResponse
+        @Body request: VoiceRequest
+    ): VoiceResponse
 }
 
 object ApiClient {

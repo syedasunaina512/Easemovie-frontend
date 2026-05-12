@@ -30,7 +30,8 @@ data class VideoResponse(
 )
 
 data class NarrationRequest(
-    val text: String
+    val text: String,
+    val voice: String = "en-US-JennyNeural"
 )
 
 data class NarrationResponse(

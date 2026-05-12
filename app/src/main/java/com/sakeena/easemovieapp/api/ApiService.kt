@@ -23,14 +23,14 @@ interface ApiService {
         @Body request: VideoRequest
     ): VideoResponse
 
-    @POST("generate_narration")
+    @POST("generate_voice")
     suspend fun generateNarration(
         @Body request: NarrationRequest
     ): NarrationResponse
 }
 
 object ApiClient {
-    private const val BASE_URL = "https://easemovie-backend.onrender.com"
+    private const val BASE_URL = "https://easemovie-backend.onrender.com/"
 
     val instance: ApiService by lazy {
         Retrofit.Builder()
